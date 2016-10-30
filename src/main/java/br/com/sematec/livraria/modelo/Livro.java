@@ -10,10 +10,10 @@ public class Livro extends BaseEntity {
 	private String isbn;
 	private double preco;
 	private String dataLancamento;
-	private List<Autor> autores = new ArrayList<Autor>();
+	private List<Autor> autores;
 
 	public Livro() {
-		super();
+		this("", "", "", 0d, new ArrayList<Autor>());
 	}
 
 	public Livro(String isbn, String titulo, String dataLancamento, double preco, List<Autor> autores) {

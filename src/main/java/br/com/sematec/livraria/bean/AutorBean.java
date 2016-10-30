@@ -22,5 +22,6 @@ public class AutorBean {
 	public void gravar() {
 		System.out.println("Gravando autor " + this.autor.getNome());
 		AutorDAO.getInstance().adiciona(this.autor);
+		this.autor = new Autor();
 	}
 }

@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://java.sun.com/jsf/html" xmlns:f="http://java.sun.com/jsf/core">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core">
 <h:body>
 	<h1>Novo Livro</h1>
 	<h:form>
+		<h:messages />
 		<fieldset>
 			<legend>Dados do Livro</legend>
 			<h:panelGrid columns="2">
@@ -22,7 +24,8 @@
 			<h:panelGrid columns="3">
 				<h:outputLabel value="Autor:" />
 				<h:selectOneMenu value="#{livroBean.autorId}">
-					<f:selectItems value="#{livroBean.autores}" itemValue="#{autor.id}" itemLabel="#{autor.nome}" var="autor" />
+					<f:selectItems value="#{autorBean.autores}" itemValue="#{autor.id}" itemLabel="#{autor.nome}"
+						var="autor" />
 				</h:selectOneMenu>
 				<h:commandButton action="#{livroBean.adicionarAutor}" value="Adiciona Autor" />
 				<h:dataTable value="#{livroBean.autoresDoLivro}" var="autor">

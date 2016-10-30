@@ -1,5 +1,6 @@
 package br.com.sematec.livraria.bean;
 
+import java.io.Serializable;
 import java.util.List;
 
 import javax.faces.bean.ManagedBean;
@@ -12,18 +13,20 @@ import br.com.sematec.livraria.modelo.Livro;
 
 @ManagedBean
 @ViewScoped
-public class LivroBean {
+public class LivroBean implements Serializable {
+	private static final long serialVersionUID = 1L;
 	private Livro livro = new Livro();
 	private Long autorId;
+
+	public LivroBean() {
+		super();
+		System.out.println("LivroBean");
+	}
 
 	public void adicionarAutor() {
 		Autor autor = AutorDAO.getInstance().buscaPorId(this.autorId);
 		System.out.println("Usando autor " + autor.getNome());
 		this.livro.adicionaAutor(autor);
-	}
-
-	public List<Autor> getAutores() {
-		return AutorDAO.getInstance().listaTodos();
 	}
 
 	public List<Autor> getAutoresDoLivro() {
@@ -48,6 +51,7 @@ public class LivroBean {
 			throw new RuntimeException("Livro deve ter pelo menos um Autor.");
 		}
 		LivroDAO.getInstance().adiciona(this.livro);
+		this.livro = new Livro();
 	}
 
 	public void setAutorId(Long autorId) {

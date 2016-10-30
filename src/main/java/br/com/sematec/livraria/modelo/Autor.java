@@ -6,7 +6,7 @@ public class Autor extends BaseEntity {
 	private String nome;
 
 	public Autor() {
-		super();
+		this("");
 	}
 
 	public Autor(String nome) {
